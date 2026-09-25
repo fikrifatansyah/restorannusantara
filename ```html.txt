@@ -1,0 +1,81 @@
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Daftar Harga Menu Restoran</title>
+</head>
+
+<body>
+
+    <h1>🍽️ DAFTAR HARGA MENU RESTORAN</h1>
+
+    <p>
+        Selamat datang di Restoran Selera Nusantara!
+        Kami menyediakan berbagai makanan dan minuman khas Indonesia
+        dengan cita rasa yang lezat dan harga yang terjangkau.
+    </p>
+
+    <hr>
+
+    <h2>🍛 Menu Makanan</h2>
+
+    <ol>
+        <li>Nasi Padang - &dollar;5</li>
+        <li>Ayam Geprek - &dollar;4</li>
+        <li>Rendang Sapi - &dollar;6</li>
+        <li>Soto Ayam - &dollar;4</li>
+        <li>Mie Ayam Bakso - &dollar;5</li>
+        <li>Gado-Gado - &dollar;3</li>
+        <li>Nasi Goreng Spesial - &dollar;5</li>
+    </ol>
+
+    <h2>🥤 Menu Minuman</h2>
+
+    <ul>
+        <li>Es Teh Manis - &dollar;1</li>
+        <li>Es Jeruk - &dollar;1</li>
+        <li>Jus Alpukat - &dollar;2</li>
+        <li>Jus Mangga - &dollar;2</li>
+        <li>Kopi Hitam - &dollar;1</li>
+        <li>Es Cendol - &dollar;2</li>
+    </ul>
+
+    <h2>🍰 Menu Dessert</h2>
+
+    <ul>
+        <li>Pisang Goreng - &dollar;2</li>
+        <li>Pancake Cokelat - &dollar;3</li>
+        <li>Es Krim - &dollar;2</li>
+    </ul>
+
+    <hr>
+
+    <h2>📍 Informasi Restoran</h2>
+
+    <p>
+        Alamat: Jl. Merdeka No. 10, Jakarta
+    </p>
+
+    <p>
+        Jam Buka: Senin - Minggu, 10.00 - 22.00 WIB
+    </p>
+
+    <p>
+        Telepon: 0812-3456-7890
+    </p>
+
+    <hr>
+
+    <p>
+        <b>Terima kasih telah mengunjungi Restoran Selera Nusantara.</b>
+        <br>
+        Selamat menikmati hidangan kami!
+    </p>
+
+    <p>
+        &copy; 2026 Restoran Selera Nusantara. Semua Hak Dilindungi.
+    </p>
+
+</body>
+</html>
+```
