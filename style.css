@@ -454,6 +454,12 @@ body::before {
   background: #000;
 }
 
+/* YouTube Shorts — portrait */
+.single-video-wrap.shorts {
+  aspect-ratio: 9 / 16;
+  max-width: 360px;
+}
+
 .single-video-wrap iframe {
   width: 100%;
   height: 100%;
