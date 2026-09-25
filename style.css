@@ -953,3 +953,198 @@ a.info-value:hover {
   .stat-num { font-size: 1.2rem; }
   .price { font-size: 1.2rem; }
 }
+
+/* ══════════════════════════════════════════
+   TATA CARA MEMESAN
+   ══════════════════════════════════════════ */
+.order-guide-section {
+  padding: 4rem 0 2rem;
+}
+
+/* ── Steps ─────────────────────────────── */
+.order-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin: 2.5rem 0;
+}
+
+.order-step {
+  display: grid;
+  grid-template-columns: 64px 64px 1fr 40px;
+  align-items: center;
+  gap: 1.2rem;
+  background: var(--white);
+  border: var(--border);
+  border-bottom: none;
+  padding: 1.4rem 1.8rem;
+  position: relative;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.order-step:first-child {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.order-step:last-child {
+  border-bottom: var(--border);
+}
+
+.order-step::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 6px;
+  background: var(--step-color, #FFE600);
+  transition: width 0.2s;
+}
+
+.order-step:hover {
+  transform: translate(-4px, -4px);
+  box-shadow: 8px 8px 0px var(--black);
+  z-index: 1;
+}
+
+.order-step:hover::before {
+  width: 10px;
+}
+
+.step-number {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  color: var(--step-color, #FFE600);
+  -webkit-text-stroke: 2px var(--black);
+  line-height: 1;
+  text-align: center;
+  min-width: 56px;
+}
+
+.step-icon {
+  font-size: 2.2rem;
+  text-align: center;
+  background: var(--step-color, #FFE600);
+  border: var(--border);
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 3px 3px 0 var(--black);
+  flex-shrink: 0;
+}
+
+.step-content h3 {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.3rem;
+  color: var(--black);
+}
+
+.step-content p {
+  font-size: 0.9rem;
+  color: #333;
+  line-height: 1.5;
+}
+
+.step-arrow {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  color: var(--black);
+  text-align: center;
+  opacity: 0.4;
+}
+
+.step-arrow.last {
+  opacity: 0;
+}
+
+/* ── Info Box ───────────────────────────── */
+.order-info-box {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  border: var(--border);
+  margin: 2.5rem 0 2rem;
+  box-shadow: var(--shadow);
+}
+
+.order-info-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.4rem 1.6rem;
+  border-right: var(--border);
+  background: var(--black);
+  color: var(--white);
+  transition: background 0.15s;
+}
+
+.order-info-item:last-child {
+  border-right: none;
+}
+
+.order-info-item:hover {
+  background: #1a1a1a;
+}
+
+.order-info-icon {
+  font-size: 2rem;
+  flex-shrink: 0;
+}
+
+.order-info-item strong {
+  display: block;
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--yellow);
+  margin-bottom: 0.2rem;
+}
+
+.order-info-item span {
+  font-size: 0.88rem;
+  color: #ccc;
+}
+
+/* ── CTA ────────────────────────────────── */
+.order-guide-cta {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+/* ── Responsive ─────────────────────────── */
+@media (max-width: 768px) {
+  .order-step {
+    grid-template-columns: 48px 48px 1fr;
+    padding: 1.1rem 1rem 1.1rem 1.2rem;
+  }
+
+  .step-arrow { display: none; }
+
+  .step-number { font-size: 1.5rem; }
+
+  .step-icon {
+    width: 48px;
+    height: 48px;
+    font-size: 1.6rem;
+  }
+
+  .step-content h3 { font-size: 1rem; }
+  .step-content p  { font-size: 0.83rem; }
+
+  .order-info-box {
+    grid-template-columns: 1fr;
+  }
+
+  .order-info-item {
+    border-right: none;
+    border-bottom: var(--border);
+  }
+
+  .order-info-item:last-child { border-bottom: none; }
+}
+
