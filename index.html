@@ -25,6 +25,8 @@
             <a href="#dessert" onclick="closeMenu()">Dessert</a>
             <a href="#cara-pesan" onclick="closeMenu()">Cara Pesan</a>
             <a href="#info" onclick="closeMenu()">Info</a>
+            <a href="#pemesanan" onclick="closeMenu()">Pemesanan</a>
+            <a href="#reservasi" onclick="closeMenu()">Reservasi</a>
         </div>
         <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Toggle menu">
             <span></span><span></span><span></span>
@@ -547,6 +549,477 @@
 
     </main>
 
+    <!-- DIVIDER -->
+    <div class="section-divider"><span>✦ FORM PEMESANAN ✦</span></div>
+
+    <!-- FORM PEMESANAN MAKANAN -->
+    <section id="pemesanan" class="pemesanan-section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-tag">ORDER NOW</div>
+                <h2>🛒 Form Pemesanan</h2>
+                <p class="pemesanan-subtitle">Pilih menu favorit Anda, isi data diri, dan kirim pesanan langsung ke WhatsApp kami!</p>
+            </div>
+
+            <div class="pemesanan-wrapper">
+                <!-- Info Panel -->
+                <div class="pemesanan-info">
+                    <div class="pinfo-card" style="--pc:var(--yellow)">
+                        <div class="pinfo-icon">🚀</div>
+                        <div>
+                            <div class="pinfo-label">PROSES CEPAT</div>
+                            <div class="pinfo-value">5–15 Menit</div>
+                            <div class="pinfo-sub">Pesanan langsung diproses</div>
+                        </div>
+                    </div>
+                    <div class="pinfo-card" style="--pc:var(--cyan)">
+                        <div class="pinfo-icon">🍽️</div>
+                        <div>
+                            <div class="pinfo-label">OPSI PESANAN</div>
+                            <div class="pinfo-value">Dine-In & Take Away</div>
+                            <div class="pinfo-sub">Makan di tempat atau bawa pulang</div>
+                        </div>
+                    </div>
+                    <div class="pinfo-card" style="--pc:var(--green)">
+                        <div class="pinfo-icon">💰</div>
+                        <div>
+                            <div class="pinfo-label">PEMBAYARAN</div>
+                            <div class="pinfo-value">Cash & Transfer</div>
+                            <div class="pinfo-sub">Bayar di tempat atau transfer</div>
+                        </div>
+                    </div>
+                    <div class="pinfo-card" style="--pc:var(--red)">
+                        <div class="pinfo-icon">✅</div>
+                        <div>
+                            <div class="pinfo-label">GARANSI</div>
+                            <div class="pinfo-value">100% Segar</div>
+                            <div class="pinfo-sub">Dimasak saat pesanan masuk</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Form Panel -->
+                <div class="pemesanan-form-wrap">
+                    <div class="pform-header">
+                        <span class="pform-badge">🥳 PESAN SEKARANG</span>
+                        <h3>Isi Data Pemesanan</h3>
+                    </div>
+                    <form id="form-pemesanan" class="pform" onsubmit="submitPemesanan(event)" novalidate>
+
+                        <div class="pform-row">
+                            <div class="pform-group">
+                                <label for="p-nama" class="pform-label">👤 Nama Lengkap <span class="req">*</span></label>
+                                <input type="text" id="p-nama" name="nama" class="pform-input" placeholder="cth: Budi Santoso" required>
+                                <span class="pform-error" id="perr-nama"></span>
+                            </div>
+                            <div class="pform-group">
+                                <label for="p-hp" class="pform-label">📱 No. HP / WhatsApp <span class="req">*</span></label>
+                                <input type="tel" id="p-hp" name="hp" class="pform-input" placeholder="cth: 08123456789" required>
+                                <span class="pform-error" id="perr-hp"></span>
+                            </div>
+                        </div>
+
+                        <div class="pform-group">
+                            <label class="pform-label">🍴 Tipe Pesanan <span class="req">*</span></label>
+                            <div class="tipe-pesanan-group">
+                                <label class="tipe-radio">
+                                    <input type="radio" name="tipe" value="Dine-In (Makan di Tempat)" checked>
+                                    <div class="tipe-box">
+                                        <span class="tipe-icon">🪑</span>
+                                        <span class="tipe-text">Dine-In</span>
+                                        <span class="tipe-sub">Makan di tempat</span>
+                                    </div>
+                                </label>
+                                <label class="tipe-radio">
+                                    <input type="radio" name="tipe" value="Take Away (Bawa Pulang)">
+                                    <div class="tipe-box">
+                                        <span class="tipe-icon">📦</span>
+                                        <span class="tipe-text">Take Away</span>
+                                        <span class="tipe-sub">Bawa pulang</span>
+                                    </div>
+                                </label>
+                            </div>
+                            <span class="pform-error" id="perr-tipe"></span>
+                        </div>
+
+                        <!-- PILIHAN MAKANAN -->
+                        <div class="pform-group">
+                            <label class="pform-label">🍛 Pilih Makanan</label>
+                            <div class="menu-pilihan-list">
+                                <label class="menu-item">
+                                    <input type="checkbox" class="menu-checkbox" data-name="Nasi Padang" data-price="25000">
+                                    <div class="menu-item-body">
+                                        <span class="mi-name">Nasi Padang</span>
+                                        <span class="mi-price">Rp 25.000</span>
+                                    </div>
+                                    <div class="mi-qty">
+                                        <button type="button" class="qty-btn" onclick="changeQty(this, -1)">−</button>
+                                        <input type="number" class="qty-input" value="1" min="1" readonly>
+                                        <button type="button" class="qty-btn" onclick="changeQty(this, 1)">+</button>
+                                    </div>
+                                </label>
+                                <label class="menu-item">
+                                    <input type="checkbox" class="menu-checkbox" data-name="Ayam Geprek" data-price="20000">
+                                    <div class="menu-item-body">
+                                        <span class="mi-name">Ayam Geprek</span>
+                                        <span class="mi-price">Rp 20.000</span>
+                                    </div>
+                                    <div class="mi-qty">
+                                        <button type="button" class="qty-btn" onclick="changeQty(this, -1)">−</button>
+                                        <input type="number" class="qty-input" value="1" min="1" readonly>
+                                        <button type="button" class="qty-btn" onclick="changeQty(this, 1)">+</button>
+                                    </div>
+                                </label>
+                                <label class="menu-item">
+                                    <input type="checkbox" class="menu-checkbox" data-name="Rendang Sapi" data-price="30000">
+                                    <div class="menu-item-body">
+                                        <span class="mi-name">Rendang Sapi</span>
+                                        <span class="mi-price">Rp 30.000</span>
+                                    </div>
+                                    <div class="mi-qty">
+                                        <button type="button" class="qty-btn" onclick="changeQty(this, -1)">−</button>
+                                        <input type="number" class="qty-input" value="1" min="1" readonly>
+                                        <button type="button" class="qty-btn" onclick="changeQty(this, 1)">+</button>
+                                    </div>
+                                </label>
+                                <label class="menu-item">
+                                    <input type="checkbox" class="menu-checkbox" data-name="Soto Ayam" data-price="20000">
+                                    <div class="menu-item-body">
+                                        <span class="mi-name">Soto Ayam</span>
+                                        <span class="mi-price">Rp 20.000</span>
+                                    </div>
+                                    <div class="mi-qty">
+                                        <button type="button" class="qty-btn" onclick="changeQty(this, -1)">−</button>
+                                        <input type="number" class="qty-input" value="1" min="1" readonly>
+                                        <button type="button" class="qty-btn" onclick="changeQty(this, 1)">+</button>
+                                    </div>
+                                </label>
+                                <label class="menu-item">
+                                    <input type="checkbox" class="menu-checkbox" data-name="Mie Ayam Bakso" data-price="25000">
+                                    <div class="menu-item-body">
+                                        <span class="mi-name">Mie Ayam Bakso</span>
+                                        <span class="mi-price">Rp 25.000</span>
+                                    </div>
+                                    <div class="mi-qty">
+                                        <button type="button" class="qty-btn" onclick="changeQty(this, -1)">−</button>
+                                        <input type="number" class="qty-input" value="1" min="1" readonly>
+                                        <button type="button" class="qty-btn" onclick="changeQty(this, 1)">+</button>
+                                    </div>
+                                </label>
+                                <label class="menu-item">
+                                    <input type="checkbox" class="menu-checkbox" data-name="Gado-Gado" data-price="15000">
+                                    <div class="menu-item-body">
+                                        <span class="mi-name">Gado-Gado</span>
+                                        <span class="mi-price">Rp 15.000</span>
+                                    </div>
+                                    <div class="mi-qty">
+                                        <button type="button" class="qty-btn" onclick="changeQty(this, -1)">−</button>
+                                        <input type="number" class="qty-input" value="1" min="1" readonly>
+                                        <button type="button" class="qty-btn" onclick="changeQty(this, 1)">+</button>
+                                    </div>
+                                </label>
+                                <label class="menu-item">
+                                    <input type="checkbox" class="menu-checkbox" data-name="Nasi Goreng Spesial" data-price="25000">
+                                    <div class="menu-item-body">
+                                        <span class="mi-name">Nasi Goreng Spesial</span>
+                                        <span class="mi-price">Rp 25.000</span>
+                                    </div>
+                                    <div class="mi-qty">
+                                        <button type="button" class="qty-btn" onclick="changeQty(this, -1)">−</button>
+                                        <input type="number" class="qty-input" value="1" min="1" readonly>
+                                        <button type="button" class="qty-btn" onclick="changeQty(this, 1)">+</button>
+                                    </div>
+                                </label>
+                            </div>
+                            <span class="pform-error" id="perr-menu"></span>
+                        </div>
+
+                        <!-- PILIHAN MINUMAN -->
+                        <div class="pform-group">
+                            <label class="pform-label">🥤 Pilih Minuman</label>
+                            <div class="menu-pilihan-list">
+                                <label class="menu-item">
+                                    <input type="checkbox" class="menu-checkbox" data-name="Es Teh Manis" data-price="5000">
+                                    <div class="menu-item-body">
+                                        <span class="mi-name">Es Teh Manis</span>
+                                        <span class="mi-price">Rp 5.000</span>
+                                    </div>
+                                    <div class="mi-qty">
+                                        <button type="button" class="qty-btn" onclick="changeQty(this, -1)">−</button>
+                                        <input type="number" class="qty-input" value="1" min="1" readonly>
+                                        <button type="button" class="qty-btn" onclick="changeQty(this, 1)">+</button>
+                                    </div>
+                                </label>
+                                <label class="menu-item">
+                                    <input type="checkbox" class="menu-checkbox" data-name="Es Jeruk" data-price="5000">
+                                    <div class="menu-item-body">
+                                        <span class="mi-name">Es Jeruk</span>
+                                        <span class="mi-price">Rp 5.000</span>
+                                    </div>
+                                    <div class="mi-qty">
+                                        <button type="button" class="qty-btn" onclick="changeQty(this, -1)">−</button>
+                                        <input type="number" class="qty-input" value="1" min="1" readonly>
+                                        <button type="button" class="qty-btn" onclick="changeQty(this, 1)">+</button>
+                                    </div>
+                                </label>
+                                <label class="menu-item">
+                                    <input type="checkbox" class="menu-checkbox" data-name="Jus Alpukat" data-price="10000">
+                                    <div class="menu-item-body">
+                                        <span class="mi-name">Jus Alpukat</span>
+                                        <span class="mi-price">Rp 10.000</span>
+                                    </div>
+                                    <div class="mi-qty">
+                                        <button type="button" class="qty-btn" onclick="changeQty(this, -1)">−</button>
+                                        <input type="number" class="qty-input" value="1" min="1" readonly>
+                                        <button type="button" class="qty-btn" onclick="changeQty(this, 1)">+</button>
+                                    </div>
+                                </label>
+                                <label class="menu-item">
+                                    <input type="checkbox" class="menu-checkbox" data-name="Jus Mangga" data-price="10000">
+                                    <div class="menu-item-body">
+                                        <span class="mi-name">Jus Mangga</span>
+                                        <span class="mi-price">Rp 10.000</span>
+                                    </div>
+                                    <div class="mi-qty">
+                                        <button type="button" class="qty-btn" onclick="changeQty(this, -1)">−</button>
+                                        <input type="number" class="qty-input" value="1" min="1" readonly>
+                                        <button type="button" class="qty-btn" onclick="changeQty(this, 1)">+</button>
+                                    </div>
+                                </label>
+                                <label class="menu-item">
+                                    <input type="checkbox" class="menu-checkbox" data-name="Kopi Hitam" data-price="5000">
+                                    <div class="menu-item-body">
+                                        <span class="mi-name">Kopi Hitam</span>
+                                        <span class="mi-price">Rp 5.000</span>
+                                    </div>
+                                    <div class="mi-qty">
+                                        <button type="button" class="qty-btn" onclick="changeQty(this, -1)">−</button>
+                                        <input type="number" class="qty-input" value="1" min="1" readonly>
+                                        <button type="button" class="qty-btn" onclick="changeQty(this, 1)">+</button>
+                                    </div>
+                                </label>
+                                <label class="menu-item">
+                                    <input type="checkbox" class="menu-checkbox" data-name="Es Cendol" data-price="15000">
+                                    <div class="menu-item-body">
+                                        <span class="mi-name">Es Cendol</span>
+                                        <span class="mi-price">Rp 15.000</span>
+                                    </div>
+                                    <div class="mi-qty">
+                                        <button type="button" class="qty-btn" onclick="changeQty(this, -1)">−</button>
+                                        <input type="number" class="qty-input" value="1" min="1" readonly>
+                                        <button type="button" class="qty-btn" onclick="changeQty(this, 1)">+</button>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- PILIHAN DESSERT -->
+                        <div class="pform-group">
+                            <label class="pform-label">🍰 Pilih Dessert</label>
+                            <div class="menu-pilihan-list">
+                                <label class="menu-item">
+                                    <input type="checkbox" class="menu-checkbox" data-name="Pisang Goreng" data-price="10000">
+                                    <div class="menu-item-body">
+                                        <span class="mi-name">Pisang Goreng</span>
+                                        <span class="mi-price">Rp 10.000</span>
+                                    </div>
+                                    <div class="mi-qty">
+                                        <button type="button" class="qty-btn" onclick="changeQty(this, -1)">−</button>
+                                        <input type="number" class="qty-input" value="1" min="1" readonly>
+                                        <button type="button" class="qty-btn" onclick="changeQty(this, 1)">+</button>
+                                    </div>
+                                </label>
+                                <label class="menu-item">
+                                    <input type="checkbox" class="menu-checkbox" data-name="Pancake Cokelat" data-price="15000">
+                                    <div class="menu-item-body">
+                                        <span class="mi-name">Pancake Cokelat</span>
+                                        <span class="mi-price">Rp 15.000</span>
+                                    </div>
+                                    <div class="mi-qty">
+                                        <button type="button" class="qty-btn" onclick="changeQty(this, -1)">−</button>
+                                        <input type="number" class="qty-input" value="1" min="1" readonly>
+                                        <button type="button" class="qty-btn" onclick="changeQty(this, 1)">+</button>
+                                    </div>
+                                </label>
+                                <label class="menu-item">
+                                    <input type="checkbox" class="menu-checkbox" data-name="Es Krim" data-price="10000">
+                                    <div class="menu-item-body">
+                                        <span class="mi-name">Es Krim</span>
+                                        <span class="mi-price">Rp 10.000</span>
+                                    </div>
+                                    <div class="mi-qty">
+                                        <button type="button" class="qty-btn" onclick="changeQty(this, -1)">−</button>
+                                        <input type="number" class="qty-input" value="1" min="1" readonly>
+                                        <button type="button" class="qty-btn" onclick="changeQty(this, 1)">+</button>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- RINGKASAN PESANAN -->
+                        <div class="pform-group">
+                            <label class="pform-label">🧾 Ringkasan Pesanan</label>
+                            <div class="ringkasan-box" id="ringkasan-box">
+                                <div class="ringkasan-empty" id="ringkasan-empty">
+                                    <p>⚠ Belum ada menu yang dipilih. Silakan pilih menu di atas!</p>
+                                </div>
+                                <div class="ringkasan-list" id="ringkasan-list" style="display:none;"></div>
+                                <div class="ringkasan-total" id="ringkasan-total" style="display:none;">
+                                    <div class="total-label">TOTAL PEMBAYARAN</div>
+                                    <div class="total-amount" id="total-amount">Rp 0</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="pform-group">
+                            <label for="p-catatan" class="pform-label">📝 Catatan Tambahan</label>
+                            <textarea id="p-catatan" name="catatan" class="pform-input pform-textarea" placeholder="cth: Pedasnya level 3, esnya kurang manis, tanpa bawang..."></textarea>
+                        </div>
+
+                        <button type="submit" class="pform-submit" id="btn-pemesanan">
+                            <span id="pbtn-text">📲 Kirim Pesanan via WhatsApp</span>
+                        </button>
+
+                        <p class="pform-note">* Dengan mengirim form ini, Anda akan diarahkan ke WhatsApp kami untuk konfirmasi pesanan.</p>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FORM RESERVASI MEJA -->
+    <section id="reservasi" class="reservasi-section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-tag">BOOK A TABLE</div>
+                <h2>🗓️ Reservasi Meja</h2>
+                <p class="reservasi-subtitle">Pesan meja sekarang dan nikmati pengalaman makan terbaik bersama orang-orang tersayang.</p>
+            </div>
+
+            <div class="reservasi-wrapper">
+                <!-- Info Panel -->
+                <div class="reservasi-info">
+                    <div class="rinfo-card" style="--rc:var(--yellow)">
+                        <div class="rinfo-icon">🕐</div>
+                        <div>
+                            <div class="rinfo-label">JAM OPERASIONAL</div>
+                            <div class="rinfo-value">10.00 – 22.00 WIB</div>
+                            <div class="rinfo-sub">Setiap hari, Senin – Minggu</div>
+                        </div>
+                    </div>
+                    <div class="rinfo-card" style="--rc:var(--cyan)">
+                        <div class="rinfo-icon">👥</div>
+                        <div>
+                            <div class="rinfo-label">KAPASITAS MEJA</div>
+                            <div class="rinfo-value">2 – 20 Tamu</div>
+                            <div class="rinfo-sub">Tersedia meja kecil hingga besar</div>
+                        </div>
+                    </div>
+                    <div class="rinfo-card" style="--rc:var(--green)">
+                        <div class="rinfo-icon">📞</div>
+                        <div>
+                            <div class="rinfo-label">KONFIRMASI CEPAT</div>
+                            <div class="rinfo-value">Via WhatsApp</div>
+                            <div class="rinfo-sub">Respon dalam &lt; 30 menit</div>
+                        </div>
+                    </div>
+                    <div class="rinfo-card" style="--rc:var(--red)">
+                        <div class="rinfo-icon">⚡</div>
+                        <div>
+                            <div class="rinfo-label">CATATAN PENTING</div>
+                            <div class="rinfo-value">Reservasi H-1</div>
+                            <div class="rinfo-sub">Harap reservasi minimal 1 hari sebelumnya</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Form Panel -->
+                <div class="reservasi-form-wrap">
+                    <div class="rform-header">
+                        <span class="rform-badge">✅ GRATIS · TANPA DEPOSIT</span>
+                        <h3>Isi Form Reservasi</h3>
+                    </div>
+                    <form id="form-reservasi" class="rform" onsubmit="submitReservasi(event)" novalidate>
+
+                        <div class="rform-row">
+                            <div class="rform-group">
+                                <label for="r-nama" class="rform-label">👤 Nama Lengkap <span class="req">*</span></label>
+                                <input type="text" id="r-nama" name="nama" class="rform-input" placeholder="cth: Budi Santoso" required>
+                                <span class="rform-error" id="err-nama"></span>
+                            </div>
+                            <div class="rform-group">
+                                <label for="r-hp" class="rform-label">📱 No. HP / WhatsApp <span class="req">*</span></label>
+                                <input type="tel" id="r-hp" name="hp" class="rform-input" placeholder="cth: 08123456789" required>
+                                <span class="rform-error" id="err-hp"></span>
+                            </div>
+                        </div>
+
+                        <div class="rform-row">
+                            <div class="rform-group">
+                                <label for="r-tanggal" class="rform-label">📅 Tanggal Reservasi <span class="req">*</span></label>
+                                <input type="date" id="r-tanggal" name="tanggal" class="rform-input" required>
+                                <span class="rform-error" id="err-tanggal"></span>
+                            </div>
+                            <div class="rform-group">
+                                <label for="r-jam" class="rform-label">🕐 Jam Kedatangan <span class="req">*</span></label>
+                                <select id="r-jam" name="jam" class="rform-input rform-select" required>
+                                    <option value="" disabled selected>-- Pilih Jam --</option>
+                                    <option>10:00</option>
+                                    <option>11:00</option>
+                                    <option>12:00</option>
+                                    <option>13:00</option>
+                                    <option>14:00</option>
+                                    <option>15:00</option>
+                                    <option>16:00</option>
+                                    <option>17:00</option>
+                                    <option>18:00</option>
+                                    <option>19:00</option>
+                                    <option>20:00</option>
+                                    <option>21:00</option>
+                                </select>
+                                <span class="rform-error" id="err-jam"></span>
+                            </div>
+                        </div>
+
+                        <div class="rform-row">
+                            <div class="rform-group">
+                                <label for="r-tamu" class="rform-label">👥 Jumlah Tamu <span class="req">*</span></label>
+                                <div class="tamu-counter">
+                                    <button type="button" class="tamu-btn" id="tamu-minus" onclick="changeTamu(-1)">−</button>
+                                    <input type="number" id="r-tamu" name="tamu" class="rform-input tamu-input" value="2" min="1" max="20" readonly>
+                                    <button type="button" class="tamu-btn" id="tamu-plus" onclick="changeTamu(1)">+</button>
+                                </div>
+                                <span class="rform-error" id="err-tamu"></span>
+                            </div>
+                            <div class="rform-group">
+                                <label for="r-meja" class="rform-label">🪑 Preferensi Meja</label>
+                                <select id="r-meja" name="meja" class="rform-input rform-select">
+                                    <option value="" selected>Bebas (Kami Siapkan)</option>
+                                    <option>Indoor – Dalam Ruangan</option>
+                                    <option>Outdoor – Teras</option>
+                                    <option>VIP – Ruang Privat</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="rform-group">
+                            <label for="r-catatan" class="rform-label">📝 Catatan Tambahan</label>
+                            <textarea id="r-catatan" name="catatan" class="rform-input rform-textarea" placeholder="cth: Ada yang berulang tahun, butuh kursi bayi, alergi makanan tertentu..."></textarea>
+                        </div>
+
+                        <button type="submit" class="rform-submit" id="btn-reservasi">
+                            <span id="btn-text">📲 Kirim Reservasi via WhatsApp</span>
+                        </button>
+
+                        <p class="rform-note">* Dengan mengirim form ini, Anda akan diarahkan ke WhatsApp kami untuk konfirmasi.</p>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- FOOTER -->
     <footer class="footer">
         <div class="footer-inner">
@@ -572,7 +1045,210 @@
             document.getElementById('nav-overlay').classList.remove('active');
             document.body.classList.remove('menu-open');
         }
+
+        /* ── RESERVASI FORM ── */
+        // Set minimum date to today
+        (function setMinDate() {
+            const today = new Date();
+            const yyyy = today.getFullYear();
+            const mm = String(today.getMonth() + 1).padStart(2, '0');
+            const dd = String(today.getDate()).padStart(2, '0');
+            document.getElementById('r-tanggal').min = `${yyyy}-${mm}-${dd}`;
+        })();
+
+        function changeTamu(delta) {
+            const input = document.getElementById('r-tamu');
+            let val = parseInt(input.value) + delta;
+            if (val < 1) val = 1;
+            if (val > 20) val = 20;
+            input.value = val;
+        }
+
+        function submitReservasi(e) {
+            e.preventDefault();
+            let valid = true;
+
+            // Clear errors
+            ['nama','hp','tanggal','jam'].forEach(id => {
+                document.getElementById('err-' + id).textContent = '';
+            });
+
+            const nama    = document.getElementById('r-nama').value.trim();
+            const hp      = document.getElementById('r-hp').value.trim();
+            const tanggal = document.getElementById('r-tanggal').value;
+            const jam     = document.getElementById('r-jam').value;
+            const tamu    = document.getElementById('r-tamu').value;
+            const meja    = document.getElementById('r-meja').value || 'Bebas';
+            const catatan = document.getElementById('r-catatan').value.trim();
+
+            if (!nama) {
+                document.getElementById('err-nama').textContent = '⚠ Nama tidak boleh kosong.';
+                valid = false;
+            }
+            if (!hp || !/^[0-9+\s-]{8,15}$/.test(hp)) {
+                document.getElementById('err-hp').textContent = '⚠ Masukkan nomor HP yang valid.';
+                valid = false;
+            }
+            if (!tanggal) {
+                document.getElementById('err-tanggal').textContent = '⚠ Pilih tanggal reservasi.';
+                valid = false;
+            }
+            if (!jam) {
+                document.getElementById('err-jam').textContent = '⚠ Pilih jam kedatangan.';
+                valid = false;
+            }
+
+            if (!valid) return;
+
+            // Format date
+            const [y, m, d] = tanggal.split('-');
+            const tglFormatted = `${d}/${m}/${y}`;
+
+            // Build WA message
+            const msg = `Halo Restoran Selera Nusantara! 🍽️%0A%0ASaya ingin melakukan *Reservasi Meja*:%0A%0A👤 *Nama*: ${encodeURIComponent(nama)}%0A📱 *No. HP*: ${encodeURIComponent(hp)}%0A📅 *Tanggal*: ${tglFormatted}%0A🕐 *Jam*: ${jam} WIB%0A👥 *Jumlah Tamu*: ${tamu} orang%0A🪑 *Meja*: ${encodeURIComponent(meja)}${catatan ? '%0A📝 *Catatan*: ' + encodeURIComponent(catatan) : ''}%0A%0ATerima kasih! 🙏`;
+
+            // Animate button
+            const btn = document.getElementById('btn-reservasi');
+            const btnText = document.getElementById('btn-text');
+            btn.classList.add('loading');
+            btnText.textContent = '⏳ Membuka WhatsApp...';
+
+            setTimeout(() => {
+                window.open(`https://wa.me/6289652744655?text=${msg}`, '_blank');
+                btn.classList.remove('loading');
+                btnText.textContent = '📲 Kirim Reservasi via WhatsApp';
+            }, 600);
+        }
+
+        /* ── PEMESANAN FORM ── */
+        function formatRupiah(angka) {
+            return 'Rp ' + angka.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+        }
+
+        function changeQty(btn, delta) {
+            const menuItem = btn.closest('.menu-item');
+            const checkbox = menuItem.querySelector('.menu-checkbox');
+            if (!checkbox.checked) {
+                checkbox.checked = true;
+            }
+            const input = menuItem.querySelector('.qty-input');
+            let val = parseInt(input.value) + delta;
+            if (val < 1) val = 1;
+            if (val > 99) val = 99;
+            input.value = val;
+            updateRingkasan();
+        }
+
+        document.querySelectorAll('.menu-checkbox').forEach(cb => {
+            cb.addEventListener('change', updateRingkasan);
+        });
+
+        function updateRingkasan() {
+            const listEl = document.getElementById('ringkasan-list');
+            const emptyEl = document.getElementById('ringkasan-empty');
+            const totalEl = document.getElementById('ringkasan-total');
+            const amountEl = document.getElementById('total-amount');
+
+            let total = 0;
+            let html = '';
+            const checked = document.querySelectorAll('.menu-checkbox:checked');
+
+            checked.forEach(cb => {
+                const name = cb.dataset.name;
+                const price = parseInt(cb.dataset.price);
+                const menuItem = cb.closest('.menu-item');
+                const qty = parseInt(menuItem.querySelector('.qty-input').value);
+                const subtotal = price * qty;
+                total += subtotal;
+                html += `
+                    <div class="ringkasan-item">
+                        <div class="ri-left">
+                            <span class="ri-name">${name}</span>
+                            <span class="ri-qty">x${qty}</span>
+                        </div>
+                        <div class="ri-right">
+                            <span class="ri-sub">${formatRupiah(subtotal)}</span>
+                        </div>
+                    </div>
+                `;
+            });
+
+            if (checked.length === 0) {
+                emptyEl.style.display = 'block';
+                listEl.style.display = 'none';
+                totalEl.style.display = 'none';
+            } else {
+                emptyEl.style.display = 'none';
+                listEl.style.display = 'block';
+                totalEl.style.display = 'flex';
+                listEl.innerHTML = html;
+                amountEl.textContent = formatRupiah(total);
+            }
+        }
+
+        function submitPemesanan(e) {
+            e.preventDefault();
+            let valid = true;
+
+            ['nama','hp'].forEach(id => {
+                document.getElementById('perr-' + id).textContent = '';
+            });
+            document.getElementById('perr-menu').textContent = '';
+
+            const nama    = document.getElementById('p-nama').value.trim();
+            const hp      = document.getElementById('p-hp').value.trim();
+            const catatan = document.getElementById('p-catatan').value.trim();
+            const tipeEl  = document.querySelector('input[name="tipe"]:checked');
+            const tipe    = tipeEl ? tipeEl.value : '';
+
+            const checked = document.querySelectorAll('.menu-checkbox:checked');
+
+            if (!nama) {
+                document.getElementById('perr-nama').textContent = '⚠ Nama tidak boleh kosong.';
+                valid = false;
+            }
+            if (!hp || !/^[0-9+\s-]{8,15}$/.test(hp)) {
+                document.getElementById('perr-hp').textContent = '⚠ Masukkan nomor HP yang valid.';
+                valid = false;
+            }
+            if (!tipe) {
+                document.getElementById('perr-tipe').textContent = '⚠ Pilih tipe pesanan.';
+                valid = false;
+            }
+            if (checked.length === 0) {
+                document.getElementById('perr-menu').textContent = '⚠ Pilih minimal satu menu.';
+                valid = false;
+            }
+
+            if (!valid) return;
+
+            let menuList = '';
+            let total = 0;
+            checked.forEach((cb, i) => {
+                const name = cb.dataset.name;
+                const price = parseInt(cb.dataset.price);
+                const menuItem = cb.closest('.menu-item');
+                const qty = parseInt(menuItem.querySelector('.qty-input').value);
+                const subtotal = price * qty;
+                total += subtotal;
+                menuList += `${i + 1}. *${name}* x${qty} — ${formatRupiah(subtotal)}%0A`;
+            });
+
+            const msg = `Halo Restoran Selera Nusantara! 🍽️%0A%0ASaya ingin *memesan makanan*:%0A%0A👤 *Nama*: ${encodeURIComponent(nama)}%0A📱 *No. HP*: ${encodeURIComponent(hp)}%0A🍴 *Tipe*: ${tipe}%0A%0A📋 *Daftar Pesanan*:%0A${menuList}%0A💰 *TOTAL*: ${formatRupiah(total)}${catatan ? '%0A%0A📝 *Catatan*: ' + encodeURIComponent(catatan) : ''}%0A%0ATerima kasih! 🙏`;
+
+            const btn = document.getElementById('btn-pemesanan');
+            const btnText = document.getElementById('pbtn-text');
+            btn.classList.add('loading');
+            btnText.textContent = '⏳ Membuka WhatsApp...';
+
+            setTimeout(() => {
+                window.open(`https://wa.me/6289652744655?text=${msg}`, '_blank');
+                btn.classList.remove('loading');
+                btnText.textContent = '📲 Kirim Pesanan via WhatsApp';
+            }, 600);
+        }
     </script>
 </body>
 
 </html>
+

@@ -1148,3 +1148,881 @@ a.info-value:hover {
   .order-info-item:last-child { border-bottom: none; }
 }
 
+/* ══════════════════════════════════════════
+   FORM PEMESANAN MAKANAN
+   ══════════════════════════════════════════ */
+.pemesanan-section {
+  padding: 2rem 0 1rem;
+}
+
+.pemesanan-section h2 {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  color: var(--black);
+  line-height: 1;
+  margin: 0;
+}
+
+.pemesanan-subtitle {
+  margin-top: 0.8rem;
+  font-size: 1rem;
+  color: #555;
+  max-width: 600px;
+}
+
+.pemesanan-wrapper {
+  display: grid;
+  grid-template-columns: 340px 1fr;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+/* ── Info Panel ────────────────────────── */
+.pemesanan-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-self: start;
+  position: sticky;
+  top: 80px;
+}
+
+.pinfo-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.2rem 1.4rem;
+  background: var(--white);
+  border: var(--border);
+  box-shadow: var(--shadow);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.pinfo-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; bottom: 0;
+  width: 6px;
+  background: var(--pc, var(--yellow));
+}
+
+.pinfo-card:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: var(--shadow-hover);
+}
+
+.pinfo-icon {
+  font-size: 2rem;
+  width: 52px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--pc, var(--yellow));
+  border: var(--border);
+  box-shadow: 3px 3px 0 var(--black);
+  flex-shrink: 0;
+}
+
+.pinfo-label {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #888;
+  margin-bottom: 0.15rem;
+}
+
+.pinfo-value {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  color: var(--black);
+  line-height: 1.2;
+}
+
+.pinfo-sub {
+  font-size: 0.78rem;
+  color: #666;
+  margin-top: 0.1rem;
+}
+
+/* ── Form Panel ────────────────────────── */
+.pemesanan-form-wrap {
+  background: var(--white);
+  border: var(--border);
+  box-shadow: var(--shadow);
+  padding: 2rem;
+}
+
+.pform-header {
+  border-bottom: var(--border);
+  padding-bottom: 1.2rem;
+  margin-bottom: 1.5rem;
+}
+
+.pform-badge {
+  display: inline-block;
+  background: var(--green);
+  color: var(--black);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.8rem;
+  border: var(--border);
+  box-shadow: 3px 3px 0 var(--black);
+  margin-bottom: 0.6rem;
+}
+
+.pform-header h3 {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  color: var(--black);
+  line-height: 1.1;
+}
+
+.pform {
+  display: flex;
+  flex-direction: column;
+  gap: 1.3rem;
+}
+
+.pform-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.pform-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.pform-label {
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+  color: var(--black);
+}
+
+.pform-label .req {
+  color: var(--red);
+}
+
+.pform-input {
+  font-family: var(--font-main);
+  font-size: 0.95rem;
+  padding: 0.75rem 1rem;
+  background: var(--white);
+  border: var(--border);
+  color: var(--black);
+  outline: none;
+  transition: box-shadow 0.15s, background 0.15s;
+  box-shadow: 3px 3px 0 var(--black);
+}
+
+.pform-input:focus {
+  background: #FFF8DC;
+  box-shadow: 5px 5px 0 var(--black);
+}
+
+.pform-input::placeholder {
+  color: #aaa;
+}
+
+.pform-textarea {
+  min-height: 80px;
+  resize: vertical;
+  font-family: var(--font-main);
+}
+
+.pform-select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%230a0a0a' d='M6 8L0 0h12z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  padding-right: 2.5rem;
+  cursor: pointer;
+}
+
+.pform-error {
+  font-size: 0.78rem;
+  color: var(--red);
+  font-weight: 600;
+  min-height: 1em;
+}
+
+/* ── Tipe Pesanan Radio ────────────────── */
+.tipe-pesanan-group {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.8rem;
+}
+
+.tipe-radio input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.tipe-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
+  padding: 1rem;
+  border: var(--border);
+  background: var(--white);
+  box-shadow: 3px 3px 0 var(--black);
+  cursor: pointer;
+  transition: all 0.15s;
+  text-align: center;
+}
+
+.tipe-radio input:checked + .tipe-box {
+  background: var(--yellow);
+  transform: translate(-2px, -2px);
+  box-shadow: 5px 5px 0 var(--black);
+}
+
+.tipe-icon {
+  font-size: 1.8rem;
+}
+
+.tipe-text {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  color: var(--black);
+}
+
+.tipe-sub {
+  font-size: 0.75rem;
+  color: #666;
+}
+
+/* ── Menu Pilihan List ─────────────────── */
+.menu-pilihan-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  border: var(--border);
+  background: var(--white);
+  max-height: 320px;
+  overflow-y: auto;
+  box-shadow: 3px 3px 0 var(--black);
+}
+
+.menu-item {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 0.65rem 0.9rem;
+  border-bottom: 2px dashed rgba(10,10,10,0.15);
+  transition: background 0.15s;
+  cursor: pointer;
+}
+
+.menu-item:last-child {
+  border-bottom: none;
+}
+
+.menu-item:hover {
+  background: rgba(255,230,0,0.08);
+}
+
+.menu-checkbox {
+  width: 20px;
+  height: 20px;
+  accent-color: var(--red);
+  cursor: pointer;
+}
+
+.menu-item-body {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+  min-width: 0;
+}
+
+.mi-name {
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--black);
+}
+
+.mi-price {
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  color: var(--black);
+  background: var(--yellow);
+  padding: 0.15rem 0.5rem;
+  border: 2px solid var(--black);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.mi-qty {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  border: 2px solid var(--black);
+  background: var(--white);
+  opacity: 0.3;
+  pointer-events: none;
+  transition: opacity 0.15s;
+}
+
+.menu-checkbox:checked ~ .mi-qty,
+.menu-item:has(.menu-checkbox:checked) .mi-qty {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.qty-btn {
+  width: 30px;
+  height: 30px;
+  background: var(--black);
+  color: var(--white);
+  border: none;
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s;
+}
+
+.qty-btn:hover {
+  background: var(--red);
+}
+
+.qty-input {
+  width: 40px;
+  height: 30px;
+  text-align: center;
+  border: none;
+  border-left: 2px solid var(--black);
+  border-right: 2px solid var(--black);
+  background: var(--white);
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  color: var(--black);
+  -moz-appearance: textfield;
+}
+
+.qty-input::-webkit-outer-spin-button,
+.qty-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* ── Ringkasan Pesanan ─────────────────── */
+.ringkasan-box {
+  border: var(--border);
+  background: var(--black);
+  box-shadow: 4px 4px 0 var(--yellow);
+  overflow: hidden;
+}
+
+.ringkasan-empty {
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.ringkasan-empty p {
+  color: var(--yellow);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.ringkasan-list {
+  padding: 1rem 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  border-bottom: 2px dashed rgba(255,230,0,0.3);
+}
+
+.ringkasan-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.ri-left {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex: 1;
+  min-width: 0;
+}
+
+.ri-name {
+  color: var(--white);
+  font-weight: 600;
+  font-size: 0.88rem;
+}
+
+.ri-qty {
+  color: var(--cyan);
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  background: rgba(0,229,255,0.1);
+  padding: 0.1rem 0.4rem;
+  border: 1.5px solid var(--cyan);
+}
+
+.ri-right {
+  flex-shrink: 0;
+}
+
+.ri-sub {
+  color: var(--yellow);
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+}
+
+.ringkasan-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.2rem;
+  background: var(--yellow);
+  gap: 1rem;
+}
+
+.total-label {
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  letter-spacing: 0.15em;
+  color: var(--black);
+}
+
+.total-amount {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  color: var(--black);
+  line-height: 1;
+}
+
+/* ── Submit Button ─────────────────────── */
+.pform-submit {
+  font-family: var(--font-main);
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 1rem 1.6rem;
+  border: var(--border);
+  background: var(--red);
+  color: var(--white);
+  box-shadow: 5px 5px 0 var(--black);
+  cursor: pointer;
+  transition: transform 0.12s, box-shadow 0.12s, background 0.12s;
+}
+
+.pform-submit:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 8px 8px 0 var(--black);
+  background: #FF5722;
+}
+
+.pform-submit:active {
+  transform: translate(3px, 3px);
+  box-shadow: 2px 2px 0 var(--black);
+}
+
+.pform-submit.loading {
+  pointer-events: none;
+  opacity: 0.75;
+}
+
+.pform-note {
+  font-size: 0.78rem;
+  color: #777;
+  text-align: center;
+  margin: -0.2rem 0 0;
+}
+
+/* ── Loading Button (shared for reservasi) ── */
+.rform-submit.loading {
+  pointer-events: none;
+  opacity: 0.75;
+}
+
+/* ── Responsive Pemesanan ──────────────── */
+@media (max-width: 960px) {
+  .pemesanan-wrapper {
+    grid-template-columns: 1fr;
+  }
+  .pemesanan-info {
+    position: static;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .pemesanan-form-wrap {
+    padding: 1.5rem 1.2rem;
+  }
+  .pform-row {
+    grid-template-columns: 1fr;
+  }
+  .pemesanan-info {
+    grid-template-columns: 1fr;
+  }
+  .pform-header h3 {
+    font-size: 1.4rem;
+  }
+  .menu-pilihan-list {
+    max-height: 260px;
+  }
+  .menu-item {
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto auto;
+    gap: 0.5rem;
+  }
+  .menu-item .mi-qty {
+    grid-column: 2;
+    justify-self: start;
+  }
+}
+
+@media (max-width: 480px) {
+  .tipe-pesanan-group {
+    grid-template-columns: 1fr;
+  }
+  .pform-submit {
+    font-size: 0.88rem;
+    padding: 0.85rem 1rem;
+  }
+  .total-amount {
+    font-size: 1.3rem;
+  }
+}
+
+/* ══════════════════════════════════════════
+   FORM RESERVASI MEJA
+   ══════════════════════════════════════════ */
+.reservasi-section {
+  background: var(--black);
+  padding: 4rem 0;
+  margin-top: 3rem;
+  border-top: var(--border);
+}
+
+.reservasi-section h2 {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  color: var(--white);
+  line-height: 1;
+  margin: 0;
+}
+
+.reservasi-subtitle {
+  margin-top: 0.8rem;
+  font-size: 1rem;
+  color: rgba(245,240,232,0.6);
+  max-width: 600px;
+}
+
+.reservasi-wrapper {
+  display: grid;
+  grid-template-columns: 340px 1fr;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.reservasi-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-self: start;
+  position: sticky;
+  top: 80px;
+}
+
+.rinfo-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.2rem 1.4rem;
+  background: var(--white);
+  border: var(--border);
+  box-shadow: 4px 4px 0 var(--rc, var(--yellow));
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.rinfo-card:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: 7px 7px 0 var(--rc, var(--yellow));
+}
+
+.rinfo-icon {
+  font-size: 2rem;
+  width: 52px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--rc, var(--yellow));
+  border: var(--border);
+  box-shadow: 3px 3px 0 var(--black);
+  flex-shrink: 0;
+}
+
+.rinfo-label {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #888;
+  margin-bottom: 0.15rem;
+}
+
+.rinfo-value {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  color: var(--black);
+  line-height: 1.2;
+}
+
+.rinfo-sub {
+  font-size: 0.78rem;
+  color: #666;
+  margin-top: 0.1rem;
+}
+
+.reservasi-form-wrap {
+  background: var(--white);
+  border: var(--border);
+  box-shadow: 6px 6px 0 var(--yellow);
+  padding: 2rem;
+}
+
+.rform-header {
+  border-bottom: var(--border);
+  padding-bottom: 1.2rem;
+  margin-bottom: 1.5rem;
+}
+
+.rform-badge {
+  display: inline-block;
+  background: var(--green);
+  color: var(--black);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.8rem;
+  border: var(--border);
+  box-shadow: 3px 3px 0 var(--black);
+  margin-bottom: 0.6rem;
+}
+
+.rform-header h3 {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  color: var(--black);
+  line-height: 1.1;
+}
+
+.rform {
+  display: flex;
+  flex-direction: column;
+  gap: 1.3rem;
+}
+
+.rform-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.rform-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.rform-label {
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+  color: var(--black);
+}
+
+.rform-label .req {
+  color: var(--red);
+}
+
+.rform-input {
+  font-family: var(--font-main);
+  font-size: 0.95rem;
+  padding: 0.75rem 1rem;
+  background: var(--white);
+  border: var(--border);
+  color: var(--black);
+  outline: none;
+  transition: box-shadow 0.15s, background 0.15s;
+  box-shadow: 3px 3px 0 var(--black);
+}
+
+.rform-input:focus {
+  background: #FFF8DC;
+  box-shadow: 5px 5px 0 var(--black);
+}
+
+.rform-input::placeholder {
+  color: #aaa;
+}
+
+.rform-textarea {
+  min-height: 80px;
+  resize: vertical;
+  font-family: var(--font-main);
+}
+
+.rform-select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%230a0a0a' d='M6 8L0 0h12z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  padding-right: 2.5rem;
+  cursor: pointer;
+}
+
+.rform-error {
+  font-size: 0.78rem;
+  color: var(--red);
+  font-weight: 600;
+  min-height: 1em;
+}
+
+/* Tamu Counter */
+.tamu-counter {
+  display: flex;
+  align-items: center;
+  border: var(--border);
+  box-shadow: 3px 3px 0 var(--black);
+  background: var(--white);
+  width: fit-content;
+}
+
+.tamu-btn {
+  width: 42px;
+  height: 42px;
+  background: var(--black);
+  color: var(--yellow);
+  border: none;
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s;
+}
+
+.tamu-btn:hover {
+  background: var(--red);
+  color: var(--white);
+}
+
+.tamu-input {
+  width: 60px;
+  height: 42px;
+  text-align: center;
+  border: none;
+  border-left: var(--border);
+  border-right: var(--border);
+  background: var(--white);
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  color: var(--black);
+  -moz-appearance: textfield;
+}
+
+.tamu-input::-webkit-outer-spin-button,
+.tamu-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.rform-submit {
+  font-family: var(--font-main);
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 1rem 1.6rem;
+  border: var(--border);
+  background: var(--yellow);
+  color: var(--black);
+  box-shadow: 5px 5px 0 var(--black);
+  cursor: pointer;
+  transition: transform 0.12s, box-shadow 0.12s;
+}
+
+.rform-submit:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 8px 8px 0 var(--black);
+}
+
+.rform-submit:active {
+  transform: translate(3px, 3px);
+  box-shadow: 2px 2px 0 var(--black);
+}
+
+.rform-note {
+  font-size: 0.78rem;
+  color: #777;
+  text-align: center;
+  margin: -0.2rem 0 0;
+}
+
+/* ── Responsive Reservasi ──────────────── */
+@media (max-width: 960px) {
+  .reservasi-wrapper {
+    grid-template-columns: 1fr;
+  }
+  .reservasi-info {
+    position: static;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .reservasi-form-wrap {
+    padding: 1.5rem 1.2rem;
+  }
+  .rform-row {
+    grid-template-columns: 1fr;
+  }
+  .reservasi-info {
+    grid-template-columns: 1fr;
+  }
+  .rform-header h3 {
+    font-size: 1.4rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .rform-submit {
+    font-size: 0.88rem;
+    padding: 0.85rem 1rem;
+  }
+}
+
